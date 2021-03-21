@@ -5,7 +5,7 @@
 					</a>
                 </div>
                 <div class="page-title-box pull-left">
-					<h3>Focus Technologies</h3>
+					<h3>HRM APPLYCATION</h3>
                 </div>
 				<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				<ul class="nav navbar-nav navbar-right user-menu pull-right">
@@ -88,14 +88,19 @@
 						<a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
 							<span class="user-img"><img class="img-circle" src="{{asset('assets/admin/img/user.jpg')}}" width="40" alt="Admin">
 							<span class="status online"></span></span>
-							<span>Admin</span>
+							<span>{{auth()->user()->name}}</span>
 							<i class="caret"></i>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="profile.html">My Profile</a></li>
 							<li><a href="edit-profile.html">Edit Profile</a></li>
 							<li><a href="settings.html">Settings</a></li>
-							<li><a href="login.html">Logout</a></li>
+							<li>
+								<form method="post" action="{{route('logout')}}">
+									@csrf
+									<input type="submit" value="LOGOUT">
+								</form>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -105,7 +110,12 @@
 						<li><a href="profile.html">My Profile</a></li>
 						<li><a href="edit-profile.html">Edit Profile</a></li>
 						<li><a href="settings.html">Settings</a></li>
-						<li><a href="login.html">Logout</a></li>
+						<li>
+								<form method="post" action="{{route('logout')}}">
+									@csrf
+									<input type="submit" value="LOGOUT">
+								</form>
+							</li>
 					</ul>
 				</div>
             </div>

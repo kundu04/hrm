@@ -20,9 +20,10 @@ use App\Http\Controllers\LoginController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('logout', function () {
+Route::post('logout', function () {
     auth()->logout();
-});
+    return redirect('/');
+})->name('logout');
 Route::get('dashboard',[DashboardController::class,'index'])->middleware('auth');
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('login',[LoginController::class,'login']);
