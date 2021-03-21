@@ -1,6 +1,6 @@
 @extends('admin/layouts/master')
 @section('content')
- <div class="page-wrapper">
+ 
                 <div class="content container-fluid">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 col-lg-3">
@@ -709,7 +709,7 @@
 						</div>
 					</div>
 				</div>			
-			</div>
+			
 @endsection
 @section('scripts')
 <script>

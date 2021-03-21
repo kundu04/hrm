@@ -11,7 +11,9 @@
            @include('admin/layouts/_header')
            {{-- sidebar --}}
            @include('admin/layouts/_sideBar')
+        <div class="page-wrapper">
            @yield('content')
+        </div>
         </div>
 		<div class="sidebar-overlay" data-reff="#sidebar"></div>
         {{--script--}}
