@@ -12,7 +12,12 @@
            {{-- sidebar --}}
            @include('admin/layouts/_sideBar')
         <div class="page-wrapper">
+            <div class="content container-fluid">
+            @include('admin/layouts/_validation_message')
+            @include('admin/layouts/_messages')
+
            @yield('content')
+            </div>
         </div>
         </div>
 		<div class="sidebar-overlay" data-reff="#sidebar"></div>
