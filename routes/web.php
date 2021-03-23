@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
 
 
 
@@ -30,4 +31,6 @@ Route::get('dashboard',[DashboardController::class,'index'])->middleware('auth')
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('login',[LoginController::class,'login']);
 Route::resource('department',DepartmentController::class);
+Route::resource('designation',DesignationController::class);
+
 
