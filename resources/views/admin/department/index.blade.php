@@ -8,7 +8,34 @@
 							<a href="{{route('department.create')}}" class="btn btn-primary rounded" ><i class="fa fa-plus"></i> Add New Department</a>
 						</div>
 					</div>
+					
 					<div class="row">
+						@php
+						$name=null;
+						if(isset($_GET['name']))
+						{
+							$name=$_GET['name'];
+						}
+						$status=null;
+						if(isset($_GET['status']))
+						{
+							$status=$_GET['status'];
+						}
+						@endphp
+						{{Form::open(['method'=>'get'])}}
+						<div class="col-sm-6">
+							{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'search department name...'])}}
+						</div>
+						<div class="col-sm-4">
+							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'select Status'])}}
+						</div>
+						<div class="col-sm-2">
+							{{Form::submit('search',['class'=>'btn btn-warning'])}}
+						</div>
+						{{Form::close()}}
+					</div>
+
+					<div class="row" style=padding-top:10px>
 						<div class="col-md-12">
 							<div>
 								<table class="table table-striped custom-table m-b-0 datatable">
