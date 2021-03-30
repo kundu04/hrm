@@ -86,7 +86,7 @@
 					</li>	
 					<li class="dropdown">
 						<a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
-							<span class="user-img"><img class="img-circle" src="{{asset('assets/admin/img/user.jpg')}}" width="40" alt="Admin">
+							<span class="user-img"><img class="img-circle" src="{{asset('user_images/'.auth()->id().'.png')}}" width="40" alt="Admin">
 							<span class="status online"></span></span>
 							<span>{{auth()->user()->name}}</span>
 							<i class="caret"></i>

@@ -2,8 +2,11 @@
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
-							<li class="active"> 
-								<a href="index.html">Dashboard</a>
+							<li> 
+								<a href="{{route('dashboard')}}">Dashboard</a>
+							</li>
+							<li> 
+								<a href="{{route('user.index')}}">User</a>
 							</li>
 
 							<li class="submenu">

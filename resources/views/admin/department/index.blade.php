@@ -2,7 +2,7 @@
 @section('content')
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="page-title">Department</h4>
+							<h4 class="page-title">{{$title}}</h4>
 						</div>
 						<div class="col-sm-4 text-right m-b-30">
 							<a href="{{route('department.create')}}" class="btn btn-primary rounded" ><i class="fa fa-plus"></i> Add New Department</a>
