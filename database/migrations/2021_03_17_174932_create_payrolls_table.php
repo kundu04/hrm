@@ -17,13 +17,13 @@ class CreatePayrollsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->float('gross_salary',2);
-            $table->float('basic_salary',2);
-            $table->float('house_rent',2);
-            $table->float('medical',2);
-            $table->float('travel_allowance',2);
-            $table->float('daily_allowance',2);
-            $table->float('provident_fund',2);
+            $table->float('gross_salary',10,2);
+            $table->float('basic_salary',10,2);
+            $table->float('house_rent',10,2);
+            $table->float('medical',10,2);
+            $table->float('travel_allowance',10,2);
+            $table->float('daily_allowance',10,2);
+            $table->float('provident_fund',10,2);
             $table->timestamps();
         });
     }

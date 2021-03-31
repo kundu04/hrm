@@ -19,15 +19,7 @@
 									<button class="btn btn-primary">Create Department</button>
 								</div>
                             {!! Form::close() !!}
-                            <!-- <form>
-								<div class="form-group">
-									<label>Department Name <span class="text-danger">*</span></label>
-									<input class="form-control" required="" type="text">
-								</div>
-								<div class="m-t-20 text-center">
-									<button class="btn btn-primary">Create Department</button>
-								</div>
-							</form> -->
+                          
 						</div>
 							
 					</div>

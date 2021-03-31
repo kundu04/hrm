@@ -7,6 +7,8 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PayrollController;
+
 
 
 /*
@@ -34,5 +36,6 @@ Route::resource('department',DepartmentController::class);
 Route::resource('designation',DesignationController::class);
 Route::resource('user',UserController::class);
 Route::get('ajax_designation_by_id/{id}',[SettingController::class,'ajaxDesignationByDepartmentId'])->name('ajaxDesignationByDepartmentId');
-
+Route::get('user/{user_id}/payroll',[PayrollController::class,'manage'])->name('payroll.manage');
+Route::put('user/{user_id}/payroll',[PayrollController::class,'update'])->name('payroll.update');
 
