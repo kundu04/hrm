@@ -14,6 +14,8 @@
 								<ul class="list-unstyled" style="display: none;">
 									<li><a href="{{route('department.index')}}"> Departments</a></li>
 									<li><a href="{{route('designation.index')}}"> Designations</a></li>
+									<li><a href="{{route('transactionHead.index')}}"> Transaction Head</a></li>
+									<li><a href="{{route('designation.index')}}"> Transaction</a></li>
 
 								</ul>
 								

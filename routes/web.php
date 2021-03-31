@@ -8,7 +8,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PayrollController;
-
+use App\Http\Controllers\TransactionHeadController;
 
 
 /*
@@ -38,4 +38,5 @@ Route::resource('user',UserController::class);
 Route::get('ajax_designation_by_id/{id}',[SettingController::class,'ajaxDesignationByDepartmentId'])->name('ajaxDesignationByDepartmentId');
 Route::get('user/{user_id}/payroll',[PayrollController::class,'manage'])->name('payroll.manage');
 Route::put('user/{user_id}/payroll',[PayrollController::class,'update'])->name('payroll.update');
+Route::resource('transactionHead',TransactionHeadController::class);
 
