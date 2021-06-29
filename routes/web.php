@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\TransactionHeadController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -39,4 +40,8 @@ Route::get('ajax_designation_by_id/{id}',[SettingController::class,'ajaxDesignat
 Route::get('user/{user_id}/payroll',[PayrollController::class,'manage'])->name('payroll.manage');
 Route::put('user/{user_id}/payroll',[PayrollController::class,'update'])->name('payroll.update');
 Route::resource('transactionHead',TransactionHeadController::class);
+Route::get('transaction/{transaction_type}',[TransactionController::class,'index'])->name('transaction.index');
+Route::get('transaction/{transaction_type}/create',[TransactionController::class,'create'])->name('transaction.create');
+Route::post('transaction/{transaction_type}',[TransactionController::class,'store'])->name('transaction.store');
+
 
