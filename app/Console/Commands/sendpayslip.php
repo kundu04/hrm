@@ -61,7 +61,17 @@ class sendpayslip extends Command
         $transaction->type='Expense';
         $transaction->description='Salary for the month of '.date('M');
         $transaction->date=date('y-m-d');
-        $transaction->amount=$request->relPayroll->gross_salary;
+        $transaction->amount=$request->relPayroll->gross_salary+$request->relPayroll->provident_fund;
+        $transaction->save();
+        
+        $transaction=new Transaction();
+        $transaction->transaction_id='In'.time();
+        $transaction->client=$request->id;
+        $transaction->transaction_head_id=2;
+        $transaction->type='Income';
+        $transaction->description='Salary for the month of '.date('M');
+        $transaction->date=date('y-m-d');
+        $transaction->amount=$request->relPayroll->provident_fund;
         $transaction->save();
     }
 }

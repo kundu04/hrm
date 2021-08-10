@@ -18,6 +18,7 @@ class TransactionController extends Controller
         {
         $data['title']=$transaction_type.' Details';
         $transaction=new Transaction();
+        $transaction=$transaction->with('relTransactionHead','relUser');
         $data['transaction_heads']=TransactionHead::where('type',$transaction_type)->where('status','Active')
         ->pluck('name','id');
         $render=[];
