@@ -28,7 +28,7 @@ class TransactionHeadController extends Controller
             $transactionHead=$transactionHead->where('status',$request->status);
             $render['status']=$request->status;
         }
-        $transactionHead=$transactionHead->paginate(1);
+        $transactionHead=$transactionHead->paginate(10);
         $transactionHead=$transactionHead->appends($render);
         $data['transactionHeads']=$transactionHead;
         return view('admin.transactionHead.index',$data);

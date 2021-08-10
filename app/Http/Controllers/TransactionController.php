@@ -35,7 +35,7 @@ class TransactionController extends Controller
         }
         $transaction=$transaction->with('relTransactionHead');
         $transaction=$transaction->where('type',$transaction_type);
-        $transaction=$transaction->paginate(1);
+        $transaction=$transaction->paginate(10);
         $transaction=$transaction->appends($render);
         $data['transactions']=$transaction;
         $data['transaction_type']=$transaction_type;

@@ -45,3 +45,7 @@ Route::get('transaction/{transaction_type}/create',[TransactionController::class
 Route::post('transaction/{transaction_type}',[TransactionController::class,'store'])->name('transaction.store');
 
 
+Route::get('/mailable', function () {
+    $data['employee']=\App\Models\User::with('relPayroll')->where('status','active')->first();
+    return new \App\Mail\SendPaySlip($data); 
+});

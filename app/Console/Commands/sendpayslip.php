@@ -4,6 +4,9 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Mail;
+use App\Models\User;
+use App\Models\Transaction;
+
 class sendpayslip extends Command
 {
     /**
@@ -37,7 +40,28 @@ class sendpayslip extends Command
      */
     public function handle()
     {
-        Mail::to('a@a.com')->send(new \App\Mail\SendPaySlip());
+        $this->generatePaySlip();
         echo 'mail sent!';
+    }
+    public function generatePaySlip(){
+        $employeeList=User::with('relPayroll')->where('status','active')->get();
+        
+        foreach($employeeList as $employee){
+            $data['employee']=$employee;
+            Mail::to( $data['employee']->email)->send(new \App\Mail\SendPaySlip($data));
+            $this->transaction($employee);
+        }
+    }
+
+    public function transaction($request){
+        $transaction=new Transaction();
+        $transaction->transaction_id='Ex'.time();
+        $transaction->client=$request->id;
+        $transaction->transaction_head_id=1;
+        $transaction->type='Expense';
+        $transaction->description='Salary for the month of '.date('M');
+        $transaction->date=date('y-m-d');
+        $transaction->amount=$request->relPayroll->gross_salary;
+        $transaction->save();
     }
 }
