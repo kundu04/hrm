@@ -5,6 +5,7 @@
 							<li> 
 								<a href="{{route('dashboard')}}">Dashboard</a>
 							</li>
+							@if(auth()->user()->type=='Admin')
 							<li> 
 								<a href="{{route('user.index')}}">User</a>
 							</li>
@@ -28,6 +29,7 @@
 								</ul>
 								
 							</li>
+							@endif
 						</ul>
 					</div>
                 </div>

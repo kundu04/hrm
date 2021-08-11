@@ -112,9 +112,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['title']='User Profile';
-        $data['users']=User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
-        return view('admin.user.show',$data);
+        if(auth()->user()->type=='Admin'){
+            $data['title'] = 'User Profile';
+            $data['users']= User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
+            return view('admin.user.show',$data);
+        }elseif(auth()->id()==$id){
+            $data['title'] = 'User Profile';
+            $data['users']= User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
+   
+            return view( 'admin.user.show',$data);
+        }
+        return redirect()->back();
+    
     }
 
     /**

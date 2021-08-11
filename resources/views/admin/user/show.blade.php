@@ -7,7 +7,9 @@
 						</div>
 						
 						<div class="col-sm-4 text-right m-b-30">
+						@if(auth()->user()->type=='Admin')
 							<a href="{{route('payroll.update',$users->id)}}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+						@endif
 						</div>
 					</div>
 					<div class="card-box">
@@ -26,7 +28,6 @@
 													<h3 class="user-name m-t-0 m-b-0">{{$users->name}}</h3>
 													<small class="text-muted">{{$users->relDesignation->name}}</small>
 													<div class="staff-id">{{$users->emplyee_id}}</div>
-													<div class="staff-msg"><a href="chat.html" class="btn btn-custom">Send Message</a></div>
 												</div>
 											</div>
 											<div class="col-md-7">
@@ -63,6 +64,11 @@
 						<div class="col-md-3">
 							<div class="card-box m-b-0">
 								<h3 class="card-title">Payroll</h3>
+								
+								@if(auth()->user()->type=='Admin')
+                        			<a href="{{ route('payroll.manage',$users->id) }}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Payroll</a>
+                    			@endif
+								<hr>
 								<div class="skills">
 									<span>Basic {{$users->relPayroll->basic_salary}}/-</span>
 									<span>House Rent {{$users->relPayroll->house_rent}}/-</span> 
