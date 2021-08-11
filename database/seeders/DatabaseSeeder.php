@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             DesignationSeeder::class,
             UserSeeder::class,
             SettingsSeed::class,
+            TransactionHeadSeeder::class,
         ]);
     }
 }
