@@ -10,32 +10,16 @@
 					</div>
 					
 					<div class="row">
-						@php
-						$name=null;
-						if(isset($_GET['name']))
-						{
-							$name=$_GET['name'];
-						}
-						$department_id=null;
-						if(isset($_GET['department_id']))
-						{
-							$department_id=$_GET['department_id'];
-						}
-						$status=null;
-						if(isset($_GET['status']))
-						{
-							$status=$_GET['status'];
-						}
-						@endphp
-						{{Form::open(['method'=>'get'])}}
+						
+						{{ Form::model(request(),['method'=>'get']) }}
 						<div class="col-sm-4">
-							{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'search designation name...'])}}
+							{{Form::text('name',null,['class'=>'form-control','placeholder'=>'search designation name...'])}}
 						</div>
 						<div class="col-sm-4">
-						{{Form::select('department_id',$department,$department_id,['class'=>'form-control','placeholder'=>'Select department name'])}}
+						{{Form::select('department_id',$department,null,['class'=>'form-control','placeholder'=>'Select department name'])}}
 						</div>
 						<div class="col-sm-2">
-							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'Status'])}}
+							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],null,['class'=>'form-control','placeholder'=>'Status'])}}
 						</div>
 						<div class="col-sm-2">
 							{{Form::submit('search',['class'=>'btn btn-warning'])}}

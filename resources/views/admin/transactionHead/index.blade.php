@@ -10,32 +10,16 @@
 					</div>
 					
 					<div class="row">
-						@php
-						$name=null;
-						if(isset($_GET['name']))
-						{
-							$name=$_GET['name'];
-						}
-						$type=null;
-						if(isset($_GET['type']))
-						{
-							$type=$_GET['type'];
-						}
-						$status=null;
-						if(isset($_GET['status']))
-						{
-							$status=$_GET['status'];
-						}
-						@endphp
-						{{Form::open(['method'=>'get'])}}
+						
+					{{ Form::model(request(),['method'=>'get']) }}
 						<div class="col-sm-4">
-							{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'search name'])}}
+							{{Form::text('name',null,['class'=>'form-control','placeholder'=>'search name'])}}
 						</div>
 						<div class="col-sm-3">
-							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'Status'])}}
+							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],null,['class'=>'form-control','placeholder'=>'Status'])}}
 						</div>
 						<div class="col-sm-3">
-							{{Form::select('type',['Income'=>'Income','Expense'=>'Expense'],$type,['class'=>'form-control','placeholder'=>'Type'])}}
+							{{Form::select('type',['Income'=>'Income','Expense'=>'Expense'],null,['class'=>'form-control','placeholder'=>'Type'])}}
 						</div>
 						<div class="col-sm-2">
 							{{Form::submit('search',['class'=>'btn btn-warning'])}}

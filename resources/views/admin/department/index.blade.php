@@ -10,24 +10,13 @@
 					</div>
 					
 					<div class="row">
-						@php
-						$name=null;
-						if(isset($_GET['name']))
-						{
-							$name=$_GET['name'];
-						}
-						$status=null;
-						if(isset($_GET['status']))
-						{
-							$status=$_GET['status'];
-						}
-						@endphp
-						{{Form::open(['method'=>'get'])}}
+						
+						{{ Form::model(request(),['method'=>'get']) }}
 						<div class="col-sm-6">
-							{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'search department name...'])}}
+							{{Form::text('name',null,['class'=>'form-control','placeholder'=>'search department name...'])}}
 						</div>
 						<div class="col-sm-4">
-							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'select Status'])}}
+							{{Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],null,['class'=>'form-control','placeholder'=>'select Status'])}}
 						</div>
 						<div class="col-sm-2">
 							{{Form::submit('search',['class'=>'btn btn-warning'])}}
