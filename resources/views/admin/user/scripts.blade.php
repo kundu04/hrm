@@ -2,7 +2,7 @@
 $(function(){
     $("#departmentId").change(function(){
             var departmentId = $(this).val();
-            var url = "{{url('ajax_designation_by_id')}}"+'/'+departmentId;
+            var url = "{{url('admin/ajax_designation_by_id')}}"+'/'+departmentId;
             $.ajax({
                 url:url,
                 type:'GET',

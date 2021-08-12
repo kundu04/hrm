@@ -16,7 +16,7 @@ class UserAccessControl
      */
     public function handle(Request $request, Closure $next)
     {
-        if(\auth()->user()->type=='Admin')
+        if(auth()->user()->type=='Admin')
         {
             return $next($request);
         }

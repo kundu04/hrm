@@ -115,6 +115,7 @@ class UserController extends Controller
         if(auth()->user()->type=='Admin'){
             $data['title'] = 'User Profile';
             $data['users']= User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
+            
             return view('admin.user.show',$data);
         }elseif(auth()->id()==$id){
             $data['title'] = 'User Profile';

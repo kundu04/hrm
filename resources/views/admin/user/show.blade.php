@@ -8,7 +8,8 @@
 						
 						<div class="col-sm-4 text-right m-b-30">
 						@if(auth()->user()->type=='Admin')
-							<a href="{{route('payroll.update',$users->id)}}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+						
+							<a href="{{route('user.edit',$users->id)}}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Profile</a>
 						@endif
 						</div>
 					</div>
@@ -70,6 +71,7 @@
                     			@endif
 								<hr>
 								<div class="skills">
+								@if($users->relPayroll != null)
 									<span>Basic {{$users->relPayroll->basic_salary}}/-</span>
 									<span>House Rent {{$users->relPayroll->house_rent}}/-</span> 
 									<span>Medical {{$users->relPayroll->medical}}/-</span>
@@ -77,6 +79,7 @@
 									<span>Daily Allowance {{$users->relPayroll->daily_allowance}}/-</span>
 									<span>Gross Salary {{$users->relPayroll->gross_salary}}/-</span>
 									<span>Provident Fund {{$users->relPayroll->provident_fund}}/-</span>
+								@endif
 								</div>
 							</div>
 						</div>

@@ -28,12 +28,14 @@ use App\Http\Controllers\TransactionController;
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('login',[LoginController::class,'login']);
 Route::middleware('auth')->group(function (){
+    
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
-    Route::resource('user',UserController::class)->only(['show']);
-    Route::middleware('user-access-control')->group(function (){
+    Route::resource('user',UserController::class)->only('show');
+
+    Route::group(['prefix'=>'admin', 'middleware' => ['user-access-control']], function() {
         Route::resource('department',DepartmentController::class);
         Route::resource('designation',DesignationController::class);
-        Route::resource('user',UserController::class)->except(['show']);
+        Route::resource('user',UserController::class)->except('show');
         Route::get('ajax_designation_by_id/{id}',[SettingController::class,'ajaxDesignationByDepartmentId'])->name('ajaxDesignationByDepartmentId');
         Route::get('user/{user_id}/payroll',[PayrollController::class,'manage'])->name('payroll.manage');
         Route::put('user/{user_id}/payroll',[PayrollController::class,'update'])->name('payroll.update');
@@ -52,6 +54,7 @@ Route::middleware('auth')->group(function (){
             return new \App\Mail\SendPaySlip($data); 
         });
     });
+
     Route::post('logout', function () {
         auth()->logout();
         return redirect('/');
