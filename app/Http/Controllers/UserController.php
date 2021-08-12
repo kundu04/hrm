@@ -37,7 +37,7 @@ class UserController extends Controller
             $user=$user->where('type',$request->type);
             $render['type']=$request->type;
         }
-        $user=$user->paginate(3);
+        $user=$user->paginate(10);
         $user=$user->appends($render);
         $data['users']=$user;
         return view('admin.user.index',$data);
