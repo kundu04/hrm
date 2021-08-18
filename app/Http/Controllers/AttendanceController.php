@@ -10,6 +10,17 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends Controller
 {
+
+    public function index()
+    {
+        $data['title']='List of Attendance';
+        $attendance = new Attendance();
+        $attendance= $attendance->with('relUser');
+        $attendance= $attendance->orderBy('id','DESC');
+        $attendance= $attendance->paginate(10);
+        $data['attendances']=$attendance;
+        return view('admin.attendance.index',$data);
+    }
     public function create()
     {
         $data['title']='Upload Attendance sheet';
@@ -19,8 +30,8 @@ class AttendanceController extends Controller
     {
         Excel::import(new UsersAttendanceImport, $request->file('attendance_file'));
 
-
-        echo 'success';
+        session()->flash('success','Attendance uploaded successfully');
+        return redirect()->route('attendance.index');
 
     }
 }
