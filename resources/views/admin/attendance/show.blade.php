@@ -4,17 +4,17 @@
         <div class="col-sm-8">
             <h4 class="page-title">{{ $title }}</h4>
         </div>
-        <div class="col-sm-4 text-right m-b-30">
-            <a href="{{ route('attendance.upload') }}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Upload Bulk Attendance</a>
-        </div>
     </div>
     <div class="row" style="margin-bottom: 10px">
         {{ Form::model(request(),['method'=>'get']) }}
-        <div class="col-sm-6">
-        {{ Form::date('date',null,['class'=>'form-control','placeholder'=>'Date']) }}
+        <div class="col-sm-3">
+            {{ Form::date('start_date',null,['class'=>'form-control','placeholder'=>'Date']) }}
+        </div>
+        <div class="col-sm-3">
+            {{ Form::date('end_date',null,['class'=>'form-control','placeholder'=>'Date']) }}
         </div>
         <div class="col-sm-4">
-        {{ Form::select('status',['Present'=>'Present','Absent'=>'Absent'],null,['class'=>'form-control','placeholder'=>'Please select status']) }}
+            {{ Form::select('status',['Present'=>'Present','Absent'=>'Absent'],null,['class'=>'form-control','placeholder'=>'Please select status']) }}
         </div>
         <div class="col-sm-2">
             {{ Form::submit('Search',['class'=>'btn btn-warning']) }}
@@ -28,10 +28,8 @@
                     <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Name</th>
                         <th>Time</th>
                         <th>Status</th>
-                        
                     </tr>
                     </thead>
                     <tbody>
@@ -39,17 +37,16 @@
 
                         <tr>
                             <td>{{ $attendance->date }}</td>
-                            <td><a href="{{ route('attendance.show',$attendance->relUser->id) }}">{{ $attendance->relUser->name }}</a></td>
                             <td>
                                 {{ $attendance->in_time.'-'.$attendance->out_time }}
                             </td>
                             <td>{{ $attendance->status }}</td>
-                            
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
                 {{ $attendances->links() }}
+                <a href="{{ route('attendance.index') }}" class="btn btn-warning">Back</a>
             </div>
         </div>
     </div>
