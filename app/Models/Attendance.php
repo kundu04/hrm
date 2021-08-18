@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
+    protected $fillable=[
+        'user_id',
+        'date',
+        'in_time',
+        'out_time',
+        'status',
+    ];
     use HasFactory;
     public function relUser()
     {

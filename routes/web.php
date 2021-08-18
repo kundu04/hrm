@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\TransactionHeadController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,9 @@ Route::middleware('auth')->group(function (){
         Route::get('transaction/{transaction_type}/create',[TransactionController::class,'create'])->name('transaction.create');
         Route::post('transaction/{transaction_type}',[TransactionController::class,'store'])->name('transaction.store');
 
+        Route::get('attendance', [AttendanceController::class,'index'])->name('attendance.index');
+        Route::get('attendance/create', [AttendanceController::class,'create'])->name('attendance.upload');
+        Route::post('attendance/store', [AttendanceController::class,'store'])->name('attendance.store');
 
         Route::get('/mailable', function () {
             $data['employee']=\App\Models\User::with('relPayroll')->where('status','active')->first();
