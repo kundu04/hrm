@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Payroll;
+use App\Models\Transaction;
 use App\Models\Department;
 use App\Models\Designation;
+use App\Models\Attendance;
 
 
 class UserController extends Controller
@@ -197,6 +200,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Payroll::where('user_id',$id)->delete();
+        Attendance::where('user_id',$id)->delete();
+        Transaction::where('client',$id)->delete();
+        User::findOrFail($id)->delete();
+
+        session()->flash('success','User deleted successfully');
+        return redirect()->route('user.index');
     }
 }

@@ -70,7 +70,11 @@
 														<li><a href="{{route('user.edit',$user->id)}}" title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
 														<li><a href="{{route('payroll.manage',$user->id)}}" title="payroll"><i class="fa fa-pencil m-r-5"></i> Manage payroll</a></li>
 														<li><a href="{{route('user.show',$user->id)}}" title="Show"><i class="fa fa-user m-r-5"></i> Profile</a></li>
-														<li><a href="#"  title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+														<li>
+															{{ Form::open(['method'=>'DELETE','route'=>['user.destroy',$user->id]]) }}
+																<button type="submit" title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
+															{{ Form::close() }}
+														</li>
 													</ul>
 												</div>
 											</td>
