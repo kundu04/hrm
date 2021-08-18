@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function (){
         Route::get('attendance/create', [AttendanceController::class,'create'])->name('attendance.upload');
         Route::post('attendance/store', [AttendanceController::class,'store'])->name('attendance.store');
         Route::get('attendance/{user_id}', [AttendanceController::class,'show'])->name('attendance.show');
+        Route::get('attendance/{user_id}/{export?}',[AttendanceController::class,'show'])->name('attendance.show');
 
         Route::get('/mailable', function () {
             $data['employee']=\App\Models\User::with('relPayroll')->where('status','active')->first();

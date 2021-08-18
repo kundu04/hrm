@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Attendance;
 use App\Imports\UsersAttendanceImport;
+use App\Exports\UsersAttendanceExport;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -47,7 +48,7 @@ class AttendanceController extends Controller
 
     }
 
-    public function show(Request $request,$user_id)
+    public function show(Request $request,$user_id,$export=false)
     {
         $user= User::findOrFail($user_id);
         $data['title']='Attendance of '.$user->name;
@@ -66,15 +67,21 @@ class AttendanceController extends Controller
             $attendance=$attendance->where('date',$request->start_date);
             $render['start_date']=$request->start_date;
         }
+    
         if(isset($request->status))
         {
             $attendance=$attendance->where('status',$request->status);
             $render['status']=$request->status;
         }
+        if(!empty($export))
+        {
+            return Excel::download(new UsersAttendanceExport($user_id), $user->name.'.xlsx');
+        }
         $attendance= $attendance->orderBy('id','DESC');
         $attendance= $attendance->paginate(10);
         $attendance= $attendance->appends($render);
         $data['attendances']=$attendance;
+        $data['user']=$user;
         return view('admin.attendance.show',$data);
     }
 
